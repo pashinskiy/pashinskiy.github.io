@@ -7,7 +7,7 @@ const products_section = document.querySelector('#products_section');
 products.forEach(function(product, index){
     //создаем карточку товара, добавляем в поле вывода
     let div = createProduct(product, index);
-    products_section.append(div);
+    products_section.appendChild(div);
 
     //заполняем карточку товара
     div.querySelector("span[data-product-id]").dataset.productId = product["productId"];
@@ -113,10 +113,10 @@ products_section.addEventListener("click", function(e){
     x.innerHTML = "&#10006;";
     x.style = 'width: 1em; background-color: rgba(0,0,0,0); color:#fff; font-size: 20px; padding: 0; position: absolute; top: 0.55em; right: 0.4em; cursor: pointer;';
     x.onclick = (e) => e.target.parentElement.hidden = true;;
-    div.append(x);
+    div.appendChild(x);
 
 
-    document.body.append(div);
+    document.body.appendChild(div);
     setTimeout(() => div.remove(), 3000);
     
 
