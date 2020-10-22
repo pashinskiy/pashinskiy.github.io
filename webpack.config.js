@@ -8,6 +8,11 @@ module.exports = {
             test: /\.html$/i,
             loader: 'html-loader',
           },
+          {
+            test: /\.js$/,
+            loader: 'babel-loader',
+            exclude: '/node_modules/'
+          },
         ],
       },
 };
