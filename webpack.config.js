@@ -20,18 +20,15 @@ module.exports = {
                     "@babel/preset-env",
                     {
                       "targets": {
-                        "browsers":[
-                          "chrome >= 35",
-                          "ie >= 10",
-                          "opera >= 20",
-                          "firefox >= 30",
-                          "safari >= 8"
-                        ]
-                      },
-                      "useBuiltIns": "entry",                      
+                        "chrome": "35",
+                        "ie": "11",
+                        "opera": "20",
+                        "firefox": "30",
+                        "safari": "8"
+                      }
                     }
                   ]
-                ],
+                ]
               }
             }
           },
