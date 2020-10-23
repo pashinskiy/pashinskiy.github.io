@@ -3,9 +3,6 @@ module.exports = {
     output: {
         filename: 'index.js'
     },
-    optimization: {
-      minimize: false
-  },
     module: {
         rules: [
           {
@@ -23,15 +20,18 @@ module.exports = {
                     "@babel/preset-env",
                     {
                       "targets": {
-                        "chrome": "35",
-                        "ie": "10",
-                        "opera": "20",
-                        "firefox": "30",
-                        "safari": "8"
-                      }
+                        "browsers":[
+                          "chrome >= 35",
+                          "ie >= 10",
+                          "opera >= 20",
+                          "firefox >= 30",
+                          "safari >= 8"
+                        ]
+                      },
+                      "useBuiltIns": "entry",                      
                     }
                   ]
-                ]
+                ],
               }
             }
           },
