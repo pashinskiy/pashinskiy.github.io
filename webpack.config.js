@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    mode: 'development',
+    //mode: 'development',
     output: {
       path: path.resolve(__dirname, 'dist-webpack'),
       filename: 'index.js'
