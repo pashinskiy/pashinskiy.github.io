@@ -14,7 +14,7 @@ module.exports = {
           },
           {
             test: /\.m?js$/,
-            exclude: /(node_modules|bower_components)/,
+            exclude: /node_modules/,
             use: {
               loader: 'babel-loader',
               options: {
@@ -23,8 +23,11 @@ module.exports = {
                     "@babel/preset-env",
                     {
                       "targets": {
-                        "chrome": "58",
-                        "ie": "10"
+                        "chrome": "35",
+                        "ie": "10",
+                        "opera": "20",
+                        "firefox": "30",
+                        "safari": "8"
                       }
                     }
                   ]
