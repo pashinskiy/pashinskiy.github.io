@@ -22,9 +22,9 @@ products.forEach(function(product, index){
     //заполняем карточку товара
     div.querySelector("span[data-product-id]").dataset.productId = product["productId"];
 
-    div.querySelector(".product_code").innerText = "Код: " + +product["code"];
+    div.querySelector(".product_code").innerHTML = "Код: " + +product["code"];
 
-    div.querySelector(".product_description>.product__link").innerText = product["title"];
+    div.querySelector(".product_description>.product__link").innerHTML = product["title"];
 
     div.querySelector(".product__link>img").src = "https:" + product["primaryImageUrl"].slice(0,-4) 
     + "_220x220_1" + product["primaryImageUrl"].slice(-4);
@@ -33,17 +33,17 @@ products.forEach(function(product, index){
     .map(elem => "<a>" + elem.slice(0,-1))
     .join(", </a>") + ".</a>";
 
-    div.querySelector(".goldPrice").innerText = product["priceGoldAlt"].toFixed(2);
+    div.querySelector(".goldPrice").innerHTML = product["priceGoldAlt"].toFixed(2);
 
-    div.querySelector(".retailPrice").innerText = product["priceRetailAlt"].toFixed(2);
+    div.querySelector(".retailPrice").innerHTML = product["priceRetailAlt"].toFixed(2);
     
     let binding = div.querySelectorAll(".ng-binding");
-    binding[0].innerText = `за ${product["unitAlt"]}`;
-    binding[1].innerText = `за ${product["unitFull"].slice(0,-1)}у`;
-    binding[2].innerText = `можно купить за ${product["bonusAmount"]} балл`;
-    binding[3].innerText = `Продается ${product["unitFull"]}ми:`;
+    binding[0].innerHTML = `за ${product["unitAlt"]}`;
+    binding[1].innerHTML = `за ${product["unitFull"].slice(0,-1)}у`;
+    binding[2].innerHTML = `можно купить за ${product["bonusAmount"]} балл`;
+    binding[3].innerHTML = `Продается ${product["unitFull"]}ми:`;
     
-    div.querySelector(".unit--infoInn").innerText = product["unitRatio"] 
+    div.querySelector(".unit--infoInn").innerHTML = product["unitRatio"] 
     + " " + product["unit"] + " = " + (product["unitRatio"]/product["unitRatioAlt"]).toFixed(2) 
     + " " + product["unitAlt"];
 
@@ -64,7 +64,7 @@ products_section.addEventListener("click", function(e){
     let parent = e.target.closest(".products_page");
     let index = +parent.classList[1].slice(3);
     //меняем .unit--infoInn
-    parent.querySelector(".unit--infoInn").innerText = input.value 
+    parent.querySelector(".unit--infoInn").innerHTML = input.value 
     + " " + products[index]["unit"] + " = " + (input.value/products[index]["unitRatioAlt"]).toFixed(2) 
     + " " + products[index]["unitAlt"];
 });
@@ -85,14 +85,14 @@ products_section.addEventListener("click", function(e){
         if (div.classList.contains("unit--active")){
             if (div == wrap.children[0]){
 
-                parent.querySelector(".goldPrice").innerText = products[index]["priceGoldAlt"].toFixed(2);
-                parent.querySelector(".retailPrice").innerText = products[index]["priceRetailAlt"].toFixed(2);
+                parent.querySelector(".goldPrice").innerHTML = products[index]["priceGoldAlt"].toFixed(2);
+                parent.querySelector(".retailPrice").innerHTML = products[index]["priceRetailAlt"].toFixed(2);
          
             }
             else{
 
-                parent.querySelector(".goldPrice").innerText = products[index]["priceGold"].toFixed(2);
-                parent.querySelector(".retailPrice").innerText = products[index]["priceRetail"].toFixed(2);
+                parent.querySelector(".goldPrice").innerHTML = products[index]["priceGold"].toFixed(2);
+                parent.querySelector(".retailPrice").innerHTML = products[index]["priceRetail"].toFixed(2);
 
             }
         }
@@ -113,7 +113,7 @@ products_section.addEventListener("click", function(e){
     };
 
     let div = document.createElement("div");
-    div.innerText = "Корзина обновлена";
+    div.innerHTML = "Корзина обновлена";
     div.className = "cart_update";
     div.style = 'width: 12em; background-color: rgba(0,0,0,0.7); color:#fff; font-size: 20px; padding: 0.5em; position: fixed; top: 1.5em; right: 1.5em; cursor: default;';
     
