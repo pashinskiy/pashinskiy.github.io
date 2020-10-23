@@ -1,4 +1,5 @@
 module.exports = {
+    mode: 'development',
     output: {
         filename: 'index.js'
     },
@@ -17,8 +18,17 @@ module.exports = {
             use: {
               loader: 'babel-loader',
               options: {
-                presets: ['@babel/preset-env'],
-                plugins: ['@babel/plugin-proposal-object-rest-spread']
+                presets: [
+                  [
+                    "@babel/preset-env",
+                    {
+                      "targets": {
+                        "chrome": "58",
+                        "ie": "10"
+                      }
+                    }
+                  ]
+                ]
               }
             }
           },
