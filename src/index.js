@@ -1,5 +1,17 @@
 import createProduct from "./createProduct";
 
+(function(e){ 
+    e.closest = e.closest || function(css){ 
+      var node = this;
+     
+      while (node) { 
+         if (node.matches(css)) return node; 
+         else node = node.parentElement; 
+      } 
+      return null; 
+    } 
+   })(Element.prototype);
+
 const products = require('./products.json');
 //поле вывода товаров
 const products_section = document.querySelector('#products_section');
