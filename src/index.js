@@ -1,5 +1,15 @@
 import createProduct from "./createProduct";
 
+(function(ELEMENT) {
+    ELEMENT.matches = ELEMENT.matches || ELEMENT.mozMatchesSelector || ELEMENT.msMatchesSelector || ELEMENT.oMatchesSelector || ELEMENT.webkitMatchesSelector;
+    ELEMENT.closest = ELEMENT.closest || function closest(selector) {
+        if (!this) return null;
+        if (this.matches(selector)) return this;
+        if (!this.parentElement) {return null}
+        else return this.parentElement.closest(selector)
+      };
+}(Element.prototype));
+
 const products = require('./products.json');
 //поле вывода товаров
 const products_section = document.querySelector('#products_section');
@@ -121,3 +131,4 @@ products_section.addEventListener("click", function(e){
     
 
 });
+
