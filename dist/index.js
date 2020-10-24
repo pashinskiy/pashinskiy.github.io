@@ -57,18 +57,20 @@
     });
     var e = i(400),
         l = document.querySelector("#products_section");
-    e.forEach(function (n, i) {
-      var e = function (n, i) {
-        var e = document.createElement("div");
-        return e.className = "products_page pg_".concat(i), e.innerHTML = t(), e;
-      }(0, i);
+    !function (n, i) {
+      n.forEach(function (n, e) {
+        var l = function (n) {
+          var i = document.createElement("div");
+          return i.className = "products_page pg_".concat(n), i.innerHTML = t(), i;
+        }(e);
 
-      l.appendChild(e), e.querySelector("span[data-product-id]").dataset.productId = n.productId, e.querySelector(".product_code").innerHTML = "Код: " + +n.code, e.querySelector(".product_description>.product__link").innerHTML = n.title, e.querySelector(".product__link>img").src = "https:" + n.primaryImageUrl.slice(0, -4) + "_220x220_1" + n.primaryImageUrl.slice(-4), e.querySelector(".product_tags").innerHTML += n.assocProducts.split("\n").map(function (n) {
-        return "<a>" + n.slice(0, -1);
-      }).join(", </a>") + ".</a>", e.querySelector(".goldPrice").innerHTML = n.priceGoldAlt.toFixed(2), e.querySelector(".retailPrice").innerHTML = n.priceRetailAlt.toFixed(2);
-      var r = e.querySelectorAll(".ng-binding");
-      r[0].innerHTML = "за ".concat(n.unitAlt), r[1].innerHTML = "за ".concat(n.unitFull.slice(0, -1), "у"), r[2].innerHTML = "можно купить за ".concat(n.bonusAmount, " балл"), r[3].innerHTML = "Продается ".concat(n.unitFull, "ми:"), e.querySelector(".unit--infoInn").innerHTML = n.unitRatio + " " + n.unit + " = " + (n.unitRatio / n.unitRatioAlt).toFixed(2) + " " + n.unitAlt, e.querySelector("input").setAttribute("readonly", "readonly");
-    }), l.addEventListener("click", function (n) {
+        i.appendChild(l), l.querySelector("span[data-product-id]").dataset.productId = n.productId, l.querySelector(".product_code").innerHTML = "Код: " + +n.code, l.querySelector(".product_description>.product__link").innerHTML = n.title, l.querySelector(".product__link>img").src = "https:" + n.primaryImageUrl.slice(0, -4) + "_220x220_1" + n.primaryImageUrl.slice(-4), l.querySelector(".product_tags").innerHTML += n.assocProducts.split("\n").map(function (n) {
+          return "<a>" + n.slice(0, -1);
+        }).join(", </a>") + ".</a>", l.querySelector(".goldPrice").innerHTML = n.priceGoldAlt.toFixed(2), l.querySelector(".retailPrice").innerHTML = n.priceRetailAlt.toFixed(2);
+        var r = l.querySelectorAll(".ng-binding");
+        r[0].innerHTML = "за ".concat(n.unitAlt), r[1].innerHTML = "за ".concat(n.unitFull.slice(0, -1), "у"), r[2].innerHTML = "можно купить за ".concat(n.bonusAmount, " балл"), r[3].innerHTML = "Продается ".concat(n.unitFull, "ми:"), l.querySelector(".unit--infoInn").innerHTML = n.unitRatio + " " + n.unit + " = " + (n.unitRatio / n.unitRatioAlt).toFixed(2) + " " + n.unitAlt, l.querySelector("input").setAttribute("readonly", "readonly");
+      });
+    }(e, l), l.addEventListener("click", function (n) {
       if (n.target.classList.contains("stepper-arrow")) {
         var t = n.target.parentElement.children[0];
         n.target.classList.contains("up") ? t.value++ : t.value--, t.value < 1 && (t.value = 1);
