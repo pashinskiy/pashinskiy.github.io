@@ -89,9 +89,9 @@
           t[i].hidden = !0;
         }
         var e = document.createElement("div");
-        e.innerHTML = "Корзина обновлена", e.className = "cart_update", e.style = "width: 12em; background-color: rgba(0,0,0,0.7); color:#fff; font-size: 20px; padding: 0.5em; position: fixed; top: 1.5em; right: 1.5em; cursor: default;", e.innerHTML += '<p style = "font-size:10px;">Добавлен товар: id = '.concat(n.target.closest(".btn_cart").dataset.productId, "<br>Количество: ").concat(n.target.closest(".product__wrapper").querySelector("input").value, "</p>");
+        e.innerHTML = "Корзина обновлена", e.classList.add("cart_update"), e.style.width = "12em", e.style.backgroundColor = "rgba(0,0,0,0.7)", e.style.color = "#fff", e.style.fontSize = "20px", e.style.padding = "0.5em", e.style.position = "fixed", e.style.top = "1.5em", e.style.right = "1.5em", e.style.cursor = "default", e.innerHTML += '<p style = "font-size:10px;">Добавлен товар: id = '.concat(n.target.closest(".btn_cart").dataset.productId, "<br>Количество: ").concat(n.target.closest(".product__wrapper").querySelector("input").value, "</p>");
         var l = document.createElement("div");
-        l.innerHTML = "&#10006;", l.style = "width: 1em; background-color: rgba(0,0,0,0); color:#fff; font-size: 20px; padding: 0; position: absolute; top: 0.55em; right: 0.4em; cursor: pointer;", l.onclick = function (n) {
+        l.innerHTML = "&#10006;", l.style.width = "1em", l.style.backgroundColor = "rgba(0,0,0,0)", l.style.color = "#fff", l.style.fontSize = "20px", l.style.padding = "0", l.style.position = "absolute", l.style.top = "0.55em", l.style.right = "0.4em", l.style.cursor = "pointer", l.onclick = function (n) {
           return n.target.parentElement.hidden = !0;
         }, e.appendChild(l), document.body.appendChild(e), setTimeout(function () {
           return e.remove();

@@ -1,20 +1,7 @@
 import createProduct from "./createProduct";
 
-if (!Element.prototype.closest) {
-	if (!Element.prototype.matches) {
-		Element.prototype.matches = Element.prototype.mozMatchesSelector || Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
-	}
-	Element.prototype.closest = function (s) {
-		var el = this;
-		var ancestor = this;
-		if (!document.documentElement.contains(el)) return null;
-		do {
-			if (ancestor.matches(s)) return ancestor;
-			ancestor = ancestor.parentElement;
-		} while (ancestor !== null);
-		return null;
-	};
-}
+import polifill from "./closestMatchesPolifill";
+polifill();
 
 
 const products = require('./products.json');
@@ -118,14 +105,30 @@ products_section.addEventListener("click", function(e){
 
     let div = document.createElement("div");
     div.innerHTML = "Корзина обновлена";
-    div.className = "cart_update";
-    div.style = 'width: 12em; background-color: rgba(0,0,0,0.7); color:#fff; font-size: 20px; padding: 0.5em; position: fixed; top: 1.5em; right: 1.5em; cursor: default;';
+    div.classList.add("cart_update");
+    div.style.width = "12em"; 
+    div.style.backgroundColor = "rgba(0,0,0,0.7)"; 
+    div.style.color = "#fff"; 
+    div.style.fontSize = "20px"; 
+    div.style.padding = "0.5em"; 
+    div.style.position = "fixed"; 
+    div.style.top = "1.5em"; 
+    div.style.right = "1.5em"; 
+    div.style.cursor = "default";
     
     div.innerHTML += `<p style = "font-size:10px;">Добавлен товар: id = ${e.target.closest(".btn_cart").dataset.productId}<br>Количество: ${e.target.closest(".product__wrapper").querySelector("input").value}</p>`;
     
     let x = document.createElement("div");
     x.innerHTML = "&#10006;";
-    x.style = 'width: 1em; background-color: rgba(0,0,0,0); color:#fff; font-size: 20px; padding: 0; position: absolute; top: 0.55em; right: 0.4em; cursor: pointer;';
+    x.style.width = "1em"; 
+    x.style.backgroundColor = "rgba(0,0,0,0)"; 
+    x.style.color = "#fff"; 
+    x.style.fontSize = "20px"; 
+    x.style.padding = "0"; 
+    x.style.position = "absolute"; 
+    x.style.top = "0.55em"; 
+    x.style.right = "0.4em"; 
+    x.style.cursor = "pointer";
     x.onclick = (e) => e.target.parentElement.hidden = true;;
     div.appendChild(x);
 
