@@ -1,5 +1,22 @@
 import createProduct from "./createProduct";
 
+if (!Element.prototype.closest) {
+	if (!Element.prototype.matches) {
+		Element.prototype.matches = Element.prototype.mozMatchesSelector || Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+	}
+	Element.prototype.closest = function (s) {
+		var el = this;
+		var ancestor = this;
+		if (!document.documentElement.contains(el)) return null;
+		do {
+			if (ancestor.matches(s)) return ancestor;
+			ancestor = ancestor.parentElement;
+		} while (ancestor !== null);
+		return null;
+	};
+}
+
+
 const products = require('./products.json');
 //поле вывода товаров
 const products_section = document.querySelector('#products_section');
@@ -68,30 +85,25 @@ products_section.addEventListener("click", function(e){
     //родитель блоков .unit--select
     let wrap = e.target.closest(".unit--wrapper");
 
-    for (let div of wrap.querySelectorAll(".unit--select")){
-        //меняем наличие .unit--active
-        div.classList.toggle("unit--active");
+    //меняем наличие .unit--active
+    wrap.children[0].classList.toggle("unit--active");
+    wrap.children[1].classList.toggle("unit--active");
 
-        if (div.classList.contains("unit--active")){
-            if (div == wrap.children[0]){
+        
+     if (wrap.children[0].classList.contains("unit--active")){
 
-                parent.querySelector(".goldPrice").innerHTML = products[index]["priceGoldAlt"].toFixed(2);
-                parent.querySelector(".retailPrice").innerHTML = products[index]["priceRetailAlt"].toFixed(2);
+        parent.querySelector(".goldPrice").innerHTML = products[index]["priceGoldAlt"].toFixed(2);
+        parent.querySelector(".retailPrice").innerHTML = products[index]["priceRetailAlt"].toFixed(2);
          
-            }
-            else{
+     }
+     else{
 
-                parent.querySelector(".goldPrice").innerHTML = products[index]["priceGold"].toFixed(2);
-                parent.querySelector(".retailPrice").innerHTML = products[index]["priceRetail"].toFixed(2);
+        parent.querySelector(".goldPrice").innerHTML = products[index]["priceGold"].toFixed(2);
+         parent.querySelector(".retailPrice").innerHTML = products[index]["priceRetail"].toFixed(2);
 
-            }
-        }
-    }
-    
+     }
 
-    
-
-
+   
 });
 
 products_section.addEventListener("click", function(e){
@@ -99,7 +111,9 @@ products_section.addEventListener("click", function(e){
     if (!e.target.closest(".btn_cart")) return;
     
     if (document.querySelectorAll(".cart_update")){
-        for (let elem of document.querySelectorAll(".cart_update")) elem.hidden = true;
+        
+        let collection = document.querySelectorAll(".cart_update");
+        for (let i = 0; i < collection.length; i++) collection[i].hidden = true;
     };
 
     let div = document.createElement("div");

@@ -44,141 +44,57 @@
 
     var n = i(756),
         t = i.n(n);
+    Element.prototype.closest || (Element.prototype.matches || (Element.prototype.matches = Element.prototype.mozMatchesSelector || Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector), Element.prototype.closest = function (n) {
+      var t = this;
+      if (!document.documentElement.contains(this)) return null;
 
-    function e(_n, t) {
-      var i;
+      do {
+        if (t.matches(n)) return t;
+        t = t.parentElement;
+      } while (null !== t);
 
-      if ("undefined" == typeof Symbol || null == _n[Symbol.iterator]) {
-        if (Array.isArray(_n) || (i = function (n, t) {
-          if (n) {
-            if ("string" == typeof n) return l(n, t);
-            var i = Object.prototype.toString.call(n).slice(8, -1);
-            return "Object" === i && n.constructor && (i = n.constructor.name), "Map" === i || "Set" === i ? Array.from(n) : "Arguments" === i || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(i) ? l(n, t) : void 0;
-          }
-        }(_n)) || t && _n && "number" == typeof _n.length) {
-          i && (_n = i);
-
-          var e = 0,
-              r = function r() {};
-
-          return {
-            s: r,
-            n: function n() {
-              return e >= _n.length ? {
-                done: !0
-              } : {
-                done: !1,
-                value: _n[e++]
-              };
-            },
-            e: function e(n) {
-              throw n;
-            },
-            f: r
-          };
-        }
-
-        throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-      }
-
-      var a,
-          u = !0,
-          o = !1;
-      return {
-        s: function s() {
-          i = _n[Symbol.iterator]();
-        },
-        n: function n() {
-          var n = i.next();
-          return u = n.done, n;
-        },
-        e: function e(n) {
-          o = !0, a = n;
-        },
-        f: function f() {
-          try {
-            u || null == i.return || i.return();
-          } finally {
-            if (o) throw a;
-          }
-        }
-      };
-    }
-
-    function l(n, t) {
-      (null == t || t > n.length) && (t = n.length);
-
-      for (var i = 0, e = new Array(t); i < t; i++) {
-        e[i] = n[i];
-      }
-
-      return e;
-    }
-
-    var r = i(400),
-        a = document.querySelector("#products_section");
-    r.forEach(function (n, i) {
+      return null;
+    });
+    var e = i(400),
+        l = document.querySelector("#products_section");
+    e.forEach(function (n, i) {
       var e = function (n, i) {
         var e = document.createElement("div");
         return e.className = "products_page pg_".concat(i), e.innerHTML = t(), e;
       }(0, i);
 
-      a.appendChild(e), e.querySelector("span[data-product-id]").dataset.productId = n.productId, e.querySelector(".product_code").innerHTML = "Код: " + +n.code, e.querySelector(".product_description>.product__link").innerHTML = n.title, e.querySelector(".product__link>img").src = "https:" + n.primaryImageUrl.slice(0, -4) + "_220x220_1" + n.primaryImageUrl.slice(-4), e.querySelector(".product_tags").innerHTML += n.assocProducts.split("\n").map(function (n) {
+      l.appendChild(e), e.querySelector("span[data-product-id]").dataset.productId = n.productId, e.querySelector(".product_code").innerHTML = "Код: " + +n.code, e.querySelector(".product_description>.product__link").innerHTML = n.title, e.querySelector(".product__link>img").src = "https:" + n.primaryImageUrl.slice(0, -4) + "_220x220_1" + n.primaryImageUrl.slice(-4), e.querySelector(".product_tags").innerHTML += n.assocProducts.split("\n").map(function (n) {
         return "<a>" + n.slice(0, -1);
       }).join(", </a>") + ".</a>", e.querySelector(".goldPrice").innerHTML = n.priceGoldAlt.toFixed(2), e.querySelector(".retailPrice").innerHTML = n.priceRetailAlt.toFixed(2);
-      var l = e.querySelectorAll(".ng-binding");
-      l[0].innerHTML = "за ".concat(n.unitAlt), l[1].innerHTML = "за ".concat(n.unitFull.slice(0, -1), "у"), l[2].innerHTML = "можно купить за ".concat(n.bonusAmount, " балл"), l[3].innerHTML = "Продается ".concat(n.unitFull, "ми:"), e.querySelector(".unit--infoInn").innerHTML = n.unitRatio + " " + n.unit + " = " + (n.unitRatio / n.unitRatioAlt).toFixed(2) + " " + n.unitAlt, e.querySelector("input").setAttribute("readonly", "readonly");
-    }), a.addEventListener("click", function (n) {
+      var r = e.querySelectorAll(".ng-binding");
+      r[0].innerHTML = "за ".concat(n.unitAlt), r[1].innerHTML = "за ".concat(n.unitFull.slice(0, -1), "у"), r[2].innerHTML = "можно купить за ".concat(n.bonusAmount, " балл"), r[3].innerHTML = "Продается ".concat(n.unitFull, "ми:"), e.querySelector(".unit--infoInn").innerHTML = n.unitRatio + " " + n.unit + " = " + (n.unitRatio / n.unitRatioAlt).toFixed(2) + " " + n.unitAlt, e.querySelector("input").setAttribute("readonly", "readonly");
+    }), l.addEventListener("click", function (n) {
       if (n.target.classList.contains("stepper-arrow")) {
         var t = n.target.parentElement.children[0];
         n.target.classList.contains("up") ? t.value++ : t.value--, t.value < 1 && (t.value = 1);
         var i = n.target.closest(".products_page"),
-            e = +i.classList[1].slice(3);
-        i.querySelector(".unit--infoInn").innerHTML = t.value + " " + r[e].unit + " = " + (t.value / r[e].unitRatioAlt).toFixed(2) + " " + r[e].unitAlt;
+            l = +i.classList[1].slice(3);
+        i.querySelector(".unit--infoInn").innerHTML = t.value + " " + e[l].unit + " = " + (t.value / e[l].unitRatioAlt).toFixed(2) + " " + e[l].unitAlt;
       }
-    }), a.addEventListener("click", function (n) {
+    }), l.addEventListener("click", function (n) {
       if (n.target.closest(".unit--select") && !n.target.closest(".unit--active")) {
-        var t,
-            i = n.target.closest(".products_page"),
-            l = +i.classList[1].slice(3),
-            a = n.target.closest(".unit--wrapper"),
-            u = e(a.querySelectorAll(".unit--select"));
-
-        try {
-          for (u.s(); !(t = u.n()).done;) {
-            var o = t.value;
-            o.classList.toggle("unit--active"), o.classList.contains("unit--active") && (o == a.children[0] ? (i.querySelector(".goldPrice").innerHTML = r[l].priceGoldAlt.toFixed(2), i.querySelector(".retailPrice").innerHTML = r[l].priceRetailAlt.toFixed(2)) : (i.querySelector(".goldPrice").innerHTML = r[l].priceGold.toFixed(2), i.querySelector(".retailPrice").innerHTML = r[l].priceRetail.toFixed(2)));
-          }
-        } catch (n) {
-          u.e(n);
-        } finally {
-          u.f();
-        }
+        var t = n.target.closest(".products_page"),
+            i = +t.classList[1].slice(3),
+            l = n.target.closest(".unit--wrapper");
+        l.children[0].classList.toggle("unit--active"), l.children[1].classList.toggle("unit--active"), l.children[0].classList.contains("unit--active") ? (t.querySelector(".goldPrice").innerHTML = e[i].priceGoldAlt.toFixed(2), t.querySelector(".retailPrice").innerHTML = e[i].priceRetailAlt.toFixed(2)) : (t.querySelector(".goldPrice").innerHTML = e[i].priceGold.toFixed(2), t.querySelector(".retailPrice").innerHTML = e[i].priceRetail.toFixed(2));
       }
-    }), a.addEventListener("click", function (n) {
+    }), l.addEventListener("click", function (n) {
       if (n.target.closest(".btn_cart")) {
-        if (document.querySelectorAll(".cart_update")) {
-          var t,
-              i = e(document.querySelectorAll(".cart_update"));
-
-          try {
-            for (i.s(); !(t = i.n()).done;) {
-              t.value.hidden = !0;
-            }
-          } catch (n) {
-            i.e(n);
-          } finally {
-            i.f();
-          }
+        if (document.querySelectorAll(".cart_update")) for (var t = document.querySelectorAll(".cart_update"), i = 0; i < t.length; i++) {
+          t[i].hidden = !0;
         }
-
+        var e = document.createElement("div");
+        e.innerHTML = "Корзина обновлена", e.className = "cart_update", e.style = "width: 12em; background-color: rgba(0,0,0,0.7); color:#fff; font-size: 20px; padding: 0.5em; position: fixed; top: 1.5em; right: 1.5em; cursor: default;", e.innerHTML += '<p style = "font-size:10px;">Добавлен товар: id = '.concat(n.target.closest(".btn_cart").dataset.productId, "<br>Количество: ").concat(n.target.closest(".product__wrapper").querySelector("input").value, "</p>");
         var l = document.createElement("div");
-        l.innerHTML = "Корзина обновлена", l.className = "cart_update", l.style = "width: 12em; background-color: rgba(0,0,0,0.7); color:#fff; font-size: 20px; padding: 0.5em; position: fixed; top: 1.5em; right: 1.5em; cursor: default;", l.innerHTML += '<p style = "font-size:10px;">Добавлен товар: id = '.concat(n.target.closest(".btn_cart").dataset.productId, "<br>Количество: ").concat(n.target.closest(".product__wrapper").querySelector("input").value, "</p>");
-        var r = document.createElement("div");
-        r.innerHTML = "&#10006;", r.style = "width: 1em; background-color: rgba(0,0,0,0); color:#fff; font-size: 20px; padding: 0; position: absolute; top: 0.55em; right: 0.4em; cursor: pointer;", r.onclick = function (n) {
+        l.innerHTML = "&#10006;", l.style = "width: 1em; background-color: rgba(0,0,0,0); color:#fff; font-size: 20px; padding: 0; position: absolute; top: 0.55em; right: 0.4em; cursor: pointer;", l.onclick = function (n) {
           return n.target.parentElement.hidden = !0;
-        }, l.appendChild(r), document.body.appendChild(l), setTimeout(function () {
-          return l.remove();
+        }, e.appendChild(l), document.body.appendChild(e), setTimeout(function () {
+          return e.remove();
         }, 3e3);
       }
     });
