@@ -27,7 +27,7 @@ products_section.addEventListener("click", function(e){
     + " " + products[index]["unit"] + " = " + (input.value/products[index]["unitRatioAlt"]).toFixed(2) 
     + " " + products[index]["unitAlt"];
 });
-
+//смена цены
 products_section.addEventListener("click", function(e){
     //если у элемента ли родителя нет класса .unit--select или уже есть класс .unit--active выход
     if (!e.target.closest(".unit--select") || e.target.closest(".unit--active")) return;
@@ -57,7 +57,7 @@ products_section.addEventListener("click", function(e){
 
    
 });
-
+//клик корзины
 products_section.addEventListener("click", function(e){
     
     if (!e.target.closest(".btn_cart")) return;
@@ -99,7 +99,7 @@ products_section.addEventListener("click", function(e){
 
 
     document.body.appendChild(div);
-    setTimeout(() => div.remove(), 3000);
+    setTimeout(() => div.parentNode.removeChild(div), 3000);
     
 
 });

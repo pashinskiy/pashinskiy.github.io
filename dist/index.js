@@ -96,7 +96,7 @@
         l.innerHTML = "&#10006;", l.style.width = "1em", l.style.backgroundColor = "rgba(0,0,0,0)", l.style.color = "#fff", l.style.fontSize = "20px", l.style.padding = "0", l.style.position = "absolute", l.style.top = "0.55em", l.style.right = "0.4em", l.style.cursor = "pointer", l.onclick = function (n) {
           return n.target.parentElement.hidden = !0;
         }, e.appendChild(l), document.body.appendChild(e), setTimeout(function () {
-          return e.remove();
+          return e.parentNode.removeChild(e);
         }, 3e3);
       }
     });
