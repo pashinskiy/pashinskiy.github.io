@@ -2,4 +2,4 @@ RewriteEngine on
 
 RewriteCond %{REQUEST_FILENAME} !-А
 
-RewriteRule .* https://pashinskiy.github.io/work/spa-vue/index.html?abc=$0 [QSA]
+RewriteRule .* index.html?abc=$0 [QSA]
