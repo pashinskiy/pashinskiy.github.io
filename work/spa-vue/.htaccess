@@ -1,0 +1,5 @@
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-А
+
+RewriteRule .* index.html?abc=$0 [QSA]
