@@ -58,7 +58,7 @@ export const store = new Vuex.Store({
     },
     mutations: {
         setFilter(state, newFilter) {
-            state.filter = newFilter;
+            state.filter = {...newFilter};
         },
         delBook(state, id) {
             state.books.forEach((item, index, arr) => {

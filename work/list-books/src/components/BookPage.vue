@@ -45,11 +45,11 @@ export default {
       setFilter: "setFilter",
     }),
     updFilter() {
-      this.setFilter(this.$route.query);
       if (!this.book) {
         this.$router.push({name: 'E404'});
         return;
       }
+      this.setFilter(this.$route.query);
     },
     pushUrl(str) {
       if (str == "next") {
