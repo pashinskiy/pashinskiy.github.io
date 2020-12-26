@@ -208,6 +208,9 @@ nav{
     text-align: center;
     align-items: center;
 }
+.project p span{
+    margin: auto;
+}
 .project p:hover span{
     display: none;
 }
