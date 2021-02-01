@@ -143,7 +143,7 @@ export default {
 
                 this.changeBalans({
                     inCode: this.code,
-                    inValue: this.value,
+                    inValue: +this.value,
                     outCode: 'RUR',
                     outValue: this.summ,
                 });
@@ -159,7 +159,7 @@ export default {
                     inCode: 'RUR',
                     inValue: this.value/this.valutes[this.code].Nominal*this.valutes[this.code].Value,
                     outCode: this.code,
-                    outValue: this.value,
+                    outValue: +this.value,
                 });                
             }
         }

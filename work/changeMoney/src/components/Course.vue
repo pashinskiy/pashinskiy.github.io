@@ -39,8 +39,9 @@ export default {
       'valutes'
     ]),
     date() {
+      console.log(this.getDate);
       let date = new Date(Date.parse(this.getDate));
-      return date.getDate() + '.' + date.getMonth()+1 + '.' + date.getFullYear();
+      return date.getDate() + '.' + +date.getMonth()+1 + '.' + date.getFullYear();
     }
   }
 };
