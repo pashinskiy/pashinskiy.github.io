@@ -1,5 +1,11 @@
 # change-money
 
+для запуска необходимо:
+
+- установленый node.js с пакетным установщиком npm или yarn
+
+- запустить из консоли в корне проекта:
+
 ## Project setup
 ```
 npm install
@@ -10,15 +16,7 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+перейти на http://localhost:8080/
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+при отсутствии необходимости проверки Номинала
+закоментировать строки 132-135 в файле src\components\Change.vue

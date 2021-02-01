@@ -39,9 +39,13 @@ export default {
       'valutes'
     ]),
     date() {
-      console.log(this.getDate);
       let date = new Date(Date.parse(this.getDate));
-      return date.getDate() + '.' + +date.getMonth()+1 + '.' + date.getFullYear();
+
+      let day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+      let mounth = (date.getMonth()+1) < 10 ? '0' + (date.getMonth()+1) : (date.getMonth()+1);
+      let year = date.getFullYear() < 10 ? '0' + date.getFullYear() : date.getFullYear();
+
+      return day + '.' + mounth + '.' + year;
     }
   }
 };
