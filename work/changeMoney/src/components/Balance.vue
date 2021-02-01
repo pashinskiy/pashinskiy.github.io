@@ -1,21 +1,23 @@
 <template>
-  <div>
+  <div class="balance">
       <h1 class="big_f">
         Баланс
       </h1>
-      
-      <table>
-        <tbody>
-          <tr
-            v-for="(value,code) in balance"
-            :key='code'
-          >
-            <td >{{ code }}</td>
-            <td>{{ form_00(value) }}</td>
 
-          </tr>
-        </tbody>
-      </table>
+      <div class="t_body none_scroll">
+        <table>
+          <tbody>
+            <tr
+              v-for="(value,code) in balance"
+              :key='code'
+            >
+              <td >{{ code }}</td>
+              <td>{{ form_00(value) }}</td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
   </div>
 </template>
 
@@ -37,12 +39,15 @@ export default {
 
 
 <style scoped>
-  div{
+  .balance{
     background: #F6F6F6;
     padding: 32px 16px;
   }
-  table{
+  .t_body{
     margin-top: 16px;
+    height: 100px;
+  }
+  table{
     width: 100%;
   }
   td{
